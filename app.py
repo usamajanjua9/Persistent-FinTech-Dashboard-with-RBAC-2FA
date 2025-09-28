@@ -83,9 +83,13 @@ qr.save(buf, format="PNG")
 buf.seek(0)
 qr_img = Image.open(buf)
 
+# Resize QR to a nice fixed size (e.g., 250x250)
+qr_img = qr_img.resize((250, 250))
+
 # Display QR in Streamlit
-st.image(qr_img, caption="Scan this QR in Google Authenticator", use_column_width=True)
+st.image(qr_img, caption="Scan this QR in Google Authenticator", use_container_width=False)
 st.info("👉 Open Google Authenticator → Add account → Scan QR code above.")
+
 
 # --------------------------
 # 🔑 Login Form
